@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Datacenter Journey</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 20 May 2020 20:06:43 -0700</lastBuildDate>
+    <lastBuildDate>Thu, 06 May 2021 22:31:25 -0700</lastBuildDate>
     
 	<atom:link href="https://datacenterjourney.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Install Specific Version Hugo MacOS</title>
+      <link>https://datacenterjourney.com/2021/install-specific-version-hugo-macos/</link>
+      <pubDate>Thu, 06 May 2021 22:31:25 -0700</pubDate>
+      
+      <guid>https://datacenterjourney.com/2021/install-specific-version-hugo-macos/</guid>
+      <description>I ran into a display formatting issue when trying to work on my blog from a different laptop. The problem was that when I initially built the site using Github and Hugo it was with an older version of Hugo. The theme being used hasn&amp;rsquo;t been updated in a while and probably isn&amp;rsquo;t compatible with the newer version of Hugo due to a change that was made somewhere along the line and never tested.</description>
+    </item>
     
     <item>
       <title>Install VCSA Certificates MacOS</title>

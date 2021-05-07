@@ -10,9 +10,9 @@
   
   
   
-  <link rel="prev" href="https://datacenterjourney.com/2020/first-promotion-computer-operator/" />
-  <link rel="next" href="https://datacenterjourney.com/2020/installing-powershell-core-windows/" />
-  <link rel="canonical" href="https://datacenterjourney.com/2020/change-macos-screenshot-defaults/" />
+  <link rel="prev" href="https://datacenterjourney.com/2020/install-vcsa-certificates-macos/" />
+  
+  <link rel="canonical" href="https://datacenterjourney.com/2021/install-specific-version-hugo-macos/" />
   <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -24,10 +24,10 @@
   <title>
        
        
-           Change MacOS Screenshot Defaults | Datacenter Journey
+           Install Specific Version Hugo MacOS | Datacenter Journey
        
   </title>
-  <meta name="title" content="Change MacOS Screenshot Defaults | Datacenter Journey">
+  <meta name="title" content="Install Specific Version Hugo MacOS | Datacenter Journey">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -35,17 +35,17 @@
 
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Change MacOS Screenshot Defaults"/>
-<meta name="twitter:description" content="I&rsquo;ve been taking lots of screenshots lately for blog posts and find myself constantly updating the files and locations. I&rsquo;m not a fan of having to repeatedly rename multiple files or move them into the appropriate folder locations to keep them organized. The process is time-consuming, and since I don&rsquo;t always write the blog post after performing the actions, it can lead to confusion. I did some searching and found that it&rsquo;s straightforward to change the default location and name of screenshot files take with a Mac."/>
+<meta name="twitter:title" content="Install Specific Version Hugo MacOS"/>
+<meta name="twitter:description" content="I ran into a display formatting issue when trying to work on my blog from a different laptop. The problem was that when I initially built the site using Github and Hugo it was with an older version of Hugo. The theme being used hasn&rsquo;t been updated in a while and probably isn&rsquo;t compatible with the newer version of Hugo due to a change that was made somewhere along the line and never tested."/>
 
   <script type="application/ld+json">
 {
   "@context": "http://schema.org",
   "@type": "BlogPosting",
-  "headline": "Change MacOS Screenshot Defaults",
+  "headline": "Install Specific Version Hugo MacOS",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https:\/\/datacenterjourney.com\/2020\/change-macos-screenshot-defaults\/"
+    "@id": "https:\/\/datacenterjourney.com\/2021\/install-specific-version-hugo-macos\/"
   },
   "image": {
     "@type": "ImageObject",
@@ -55,10 +55,10 @@
   },
   "genre": "posts",
   
-  "wordcount":  319 ,
-  "url": "https:\/\/datacenterjourney.com\/2020\/change-macos-screenshot-defaults\/",
-  "datePublished": "2020-02-18T13:55:10-08:00",
-  "dateModified": "2020-02-18T13:55:10-08:00",
+  "wordcount":  705 ,
+  "url": "https:\/\/datacenterjourney.com\/2021\/install-specific-version-hugo-macos\/",
+  "datePublished": "2021-05-06T22:31:25-07:00",
+  "dateModified": "2021-05-06T22:31:25-07:00",
   
   "publisher": {
     "@type": "Organization",
@@ -134,21 +134,21 @@
       		
 <article class="post-warp">
     <header class="post-header">
-        <h1 class="post-title">Change MacOS Screenshot Defaults</h1>
+        <h1 class="post-title">Install Specific Version Hugo MacOS</h1>
         <div class="post-meta">
             Written by <a href="https://datacenterjourney.com" rel="author">Manuel Martinez</a> with ♥ 
                 <span class="post-time">
-                    on <time datetime=2020-02-18 >18 February 2020</time>
+                    on <time datetime=2021-05-06 >6 May 2021</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
                 <span class="post-category">
                         <a href="https://datacenterjourney.com/categories/macos/"> macOS </a>
-                        <a href="https://datacenterjourney.com/categories/bash/"> bash </a>
+                        <a href="https://datacenterjourney.com/categories/website/"> Website </a>
                         
                 </span>
                 <i class="iconfont icon-timer"></i>
-                2 min
+                4 min
         </div>
     </header>
     <div class="post-content">
@@ -167,25 +167,85 @@
           
           
 
-          
+          <p>I ran into a display formatting issue when trying to work on my blog from a different laptop. The problem was that when I initially built the site using Github and Hugo it was with an older version of Hugo. The theme being used hasn&rsquo;t been updated in a while and probably isn&rsquo;t compatible with the newer version of Hugo due to a change that was made somewhere along the line and never tested. Luckily I still have the original laptop I was using to build the site and was able to verify what version of Hugo is installed and that the formatting is displaying correctly. I then had to try and find out how to get that version installed on the new laptop since I already had cloned the blog repository.</p>
 
-<p>I&rsquo;ve been taking lots of screenshots lately for blog posts and find myself constantly updating the files and locations. I&rsquo;m not a fan of having to repeatedly rename multiple files or move them into the appropriate folder locations to keep them organized. The process is time-consuming, and since I don&rsquo;t always write the blog post after performing the actions, it can lead to confusion. I did some searching and found that it&rsquo;s straightforward to change the default location and name of screenshot files take with a Mac. Rather than have to look for this information every time I need to do it decided it would be helpful to me and possibly others to write a quick post on the steps.</p>
+<p>The easiest way to install the latest version of Hugo on macOS is to use Homebrew and run the command below. The problem was that this installed v0.83.1 at the time of this writing which is much newer than what I originally installed almost two years ago.</p>
 
-<p>Before changing the default location from the Desktop to a location of your choosing, the folder must exist before making the change. Also, be aware that if you delete or move the new screenshots folder, it can cause issues. If you are changing just the default name and not the folder location, then you don&rsquo;t have to worry about folders.</p>
-
-<h4 id="changing-the-default-file-name-of-screenshots">Changing the default file name of screenshots</h4>
-
-<p>Open Terminal and type the commands listed below. Make sure to replace the text between the quotes &ldquo; &rdquo; with the new default name you want to assign. Once that is completed, you must restart the SystemUIServer process by running the <code>killall</code> command. Now any new screenshots taken are saved with the new default name prefix instead of &ldquo;Screen Shot.&rdquo;</p>
-
-<pre><code class="language-bash">defaults write com.apple.screencapture name &quot;HomeLab&quot;
- killall SystemUIServer
+<pre><code class="language-bash">brew install hugo
 </code></pre>
 
-<h4 id="changing-the-default-file-location-of-screenshots">Changing the default file location of screenshots</h4>
+<p>If you want to install a specific older version of Hugo then you need to go to the release page and search for the version you want to install.</p>
 
-<p>Remember that the directory location must exist before changing the default path as the command does not create it for you. If Terminal is not already open, you need to open it and run the subsequent commands. Make sure to change the directory path after &ldquo;location&rdquo; with the folder you want to set.</p>
+<p><a href="https://github.com/gohugoio/hugo/releases" rel="nofollow noreferrer" target="_blank">https://github.com/gohugoio/hugo/releases</a></p>
 
-<pre><code class="language-bash">defaults write com.apple.screencapture location ~/Documents/Blog/macOS
+<p>For this document, we will be installing version 0.55.6 by searching for that version and then clicking on the version number link. You will then get a list of available installations for the different operating systems. Here we are installing the x64 version for macOS and will download the tarball to perform the installation which is named as follows hugo_0.55.6_macOS-64bit.tar.gz.</p>
+
+<p>It&rsquo;s usually a good idea to verify that the tarball download wasn&rsquo;t corrupted by running the command below to verify.</p>
+
+<pre><code class="language-bash">tar tvf ~/Downloads/hugo_0.55.6_macOS-64bit.tar
+</code></pre>
+
+<p>There are a few tasks you will want to perform to make running hugo quicker and easier. Run the following command to determine whether your default shell is bash or zsh.</p>
+
+<pre><code class="language-bash">echo $SHELL
+</code></pre>
+
+<p>Depending on which shell you are running you will need to edit the profile using one of the commands below.</p>
+
+<pre><code class="language-bash">vi ~/.bash_profile
+ #or
+ vi ~/.zprofile
+</code></pre>
+
+<p>Using the vi editor you can then hit <code>i</code> to enter insert mode and then you will add a line to append the following information to the profile.</p>
+
+<pre><code class="language-bash">export PATH=$PATH:$HOME/bin
+</code></pre>
+
+<p>After you have added the information you will hit the <code>esc</code> key to switch back to command mode and type <code>:wq</code> to save the changes and exit the file. To have the information available for our current session you will need to source the file using one of the following commands based on your default shell.</p>
+
+<pre><code class="language-bash">source ~/.bash_profile
+ #or
+ source ~/.zprofile
+</code></pre>
+
+<p>To install the specific version of hugo in the local bin directory. First, check to see if you already have a bin directory by running the command to list its contents.</p>
+
+<pre><code class="language-bash">ls ~/bin
+</code></pre>
+
+<p>If you get a message that there is no such directory then you will need to create it with the following command.</p>
+
+<pre><code class="language-bash">mkdir ~/bin
+</code></pre>
+
+<p>Now we can extract the tarball to the local user bin directory using the following commands. First, you will want to change your working directory and then extract the tarball. Make sure to replace the path with the location of where you have the tarball downloaded.</p>
+
+<pre><code class="language-bash">cd ~/bin
+ tar -xvzf ~/Downloads/hugo_0.55.6_macOS-64bit.tar
+</code></pre>
+
+<p>Check to see if the tarball was extracted and installed correctly running the two commands below. The first command will verify that hugo is in the local bin directory and the second command verifies that the version you installed runs.</p>
+
+<pre><code class="language-bash"># checks the path
+ which hugo
+
+ # displays the version
+ hugo version
+</code></pre>
+
+<p>If you are going to be installing multiple versions I recommend renaming the hugo file have the version number after it. This will allow you to specify which version of Hugo you want to have running when working on your site. The command below shows you how to rename the file to include the version number. Make sure to replace &lsquo;martinez&rsquo; with your username.</p>
+
+<pre><code class="language-bash">mv /Users/martinez/bin/hugo /Users/martinez/bin/hugo55.6
+</code></pre>
+
+<p>Now to run any of the hugo commands you will use the new file name for example to check the path and version.</p>
+
+<pre><code class="language-bash"># check the path
+ which hugo55.6
+
+ #display the version
+ hugo55.6 version
 </code></pre>
 
     </div>
@@ -200,7 +260,7 @@
            
             <p class="copyright-item">
                     <span>Words:</span>
-                   <span>319</span>
+                   <span>705</span>
             </p>
             
             <p class="copyright-item">
@@ -209,7 +269,7 @@
                 <span>
 
       
-        <a href="//twitter.com/share?url=https%3a%2f%2fdatacenterjourney.com%2f2020%2fchange-macos-screenshot-defaults%2f&amp;text=Change%20MacOS%20Screenshot%20Defaults&amp;via=ManuelM_IT" target="_blank" title="Share on Twitter">
+        <a href="//twitter.com/share?url=https%3a%2f%2fdatacenterjourney.com%2f2021%2finstall-specific-version-hugo-macos%2f&amp;text=Install%20Specific%20Version%20Hugo%20MacOS&amp;via=ManuelM_IT" target="_blank" title="Share on Twitter">
           <i class="iconfont icon-twitter"></i>
         </a>
         
@@ -219,7 +279,7 @@
       
       
       
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fdatacenterjourney.com%2f2020%2fchange-macos-screenshot-defaults%2f&amp;title=Change%20MacOS%20Screenshot%20Defaults" target="_blank" title="Share on LinkedIn">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fdatacenterjourney.com%2f2021%2finstall-specific-version-hugo-macos%2f&amp;title=Install%20Specific%20Version%20Hugo%20MacOS" target="_blank" title="Share on LinkedIn">
           <i class="iconfont icon-linkedin"></i>
         </a>
         
@@ -259,10 +319,8 @@
 
     <div class="post-nav">
         
-        <a href="https://datacenterjourney.com/2020/first-promotion-computer-operator/" class="prev" rel="prev" title="First Promotion - Computer Operator"><i class="iconfont icon-dajiantou"></i>&nbsp;First Promotion - Computer Operator</a>
+        <a href="https://datacenterjourney.com/2020/install-vcsa-certificates-macos/" class="prev" rel="prev" title="Install VCSA Certificates MacOS"><i class="iconfont icon-dajiantou"></i>&nbsp;Install VCSA Certificates MacOS</a>
          
-        
-        <a href="https://datacenterjourney.com/2020/installing-powershell-core-windows/" class="next" rel="next" title="Installing PowerShell Core Windows">Installing PowerShell Core Windows&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
         
     </div>
 
