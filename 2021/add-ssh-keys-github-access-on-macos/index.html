@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://datacenterjourney.com/2021/install-specific-version-hugo-macos/" />
+  
+  <link rel="canonical" href="https://datacenterjourney.com/2021/add-ssh-keys-github-access-on-macos/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Add SSH Keys GitHub Access on MacOS | Datacenter Journey
+       
+  </title>
+  <meta name="title" content="Add SSH Keys GitHub Access on MacOS | Datacenter Journey">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Add SSH Keys GitHub Access on MacOS"/>
+<meta name="twitter:description" content="When trying to update the website hosted in GitHub from a different laptop there was an issue with the submodules not being updated on the new laptop correctly. After searching multiple sites to try and correct this issue I was finally able to figure out what the problem was. The public folder wasn&rsquo;t being properly recognized as a submodule within my Github repository when cloning it to the new laptop."/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Add SSH Keys GitHub Access on MacOS",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https:\/\/datacenterjourney.com\/2021\/add-ssh-keys-github-access-on-macos\/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https:\/\/datacenterjourney.com\/cover.png",
+    "width":  800 ,
+    "height":  600 
+  },
+  "genre": "posts",
+  
+  "wordcount":  1000 ,
+  "url": "https:\/\/datacenterjourney.com\/2021\/add-ssh-keys-github-access-on-macos\/",
+  "datePublished": "2021-05-25T16:20:25-07:00",
+  "dateModified": "2021-05-25T16:20:25-07:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Manuel Martinez",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https:\/\/datacenterjourney.com\/logo.png",
+      "width":  127 ,
+      "height":  40 
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Manuel Martinez"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://datacenterjourney.com">Datacenter Journey</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/about" title="">About</a>
+                
+                <a class="menu-item" href="/subscribe" title="">Subscribe</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://datacenterjourney.com">Datacenter Journey</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/about" title="">About</a>
+                
+                <a class="menu-item" href="/subscribe" title="">Subscribe</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">Add SSH Keys GitHub Access on MacOS</h1>
+        <div class="post-meta">
+            Written by <a href="https://datacenterjourney.com" rel="author">Manuel Martinez</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2021-05-25 >25 May 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://datacenterjourney.com/categories/macos/"> macOS </a>
+                        <a href="https://datacenterjourney.com/categories/bash/"> bash </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                5 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<p>When trying to update the website hosted in GitHub from a different laptop there was an issue with the submodules not being updated on the new laptop correctly. After searching multiple sites to try and correct this issue I was finally able to figure out what the problem was. The <code>public</code> folder wasn&rsquo;t being properly recognized as a submodule within my Github repository when cloning it to the new laptop. To correct this there were a few things that needed to happen due to the new security changes deprecating the use of passwords for basic authentication with GitHub. I needed to add the SSH Keys from the new laptop to GitHub to then be able to add the submodule. For this post I will focus on creating, adding and testing the SSH keys for GitHub access and in the next post I will cover the error and steps for properly adding a git submodule.</p>
+
+<h3 id="check-for-ssh-keys">Check for SSH Keys</h3>
+
+<p>You will want to open up your terminal and enter the following command to check if you have any existing SSH keys on your Mac.</p>
+
+<pre><code class="language-bash">ls -al ~/.ssh
+</code></pre>
+
+<p>You are looking for any of the following file names if they were created with the defaults.</p>
+
+<ul>
+<li><em>id_rsa.pub</em></li>
+<li><em>id_ecdsa.pub</em></li>
+<li><em>id_ed25519.pub</em></li>
+</ul>
+
+<p>If they are not present move on to the next section on <strong>Creating SSH Keys</strong>, if they are present skip to either the <strong>Add SSH Keys to ssh-agent</strong> or <strong>Add SSH Keys to GitHub</strong>.</p>
+
+<h3 id="creating-ssh-keys">Creating SSH Keys</h3>
+
+<p>To generate new SSH Keys run the command below making sure to replace the email address with the one used to access your GitHub account.</p>
+
+<pre><code class="language-bash">ssh-keygen -t ed25519 -C &quot;emailaddress@company.com&quot;
+</code></pre>
+
+<p>You will then be prompted to &ldquo;Enter a file in which to save the key,&rdquo; go ahead and press &lsquo;Enter&rsquo; to accept the default location. Next, you will be prompted for a passphrase. You can either press &lsquo;Enter&rsquo; to leave it blank or type in a passphrase. You will get a second prompt to confirm your previous entry.</p>
+
+<h3 id="add-ssh-keys-to-ssh-agent">Add SSH keys to ssh-agent</h3>
+
+<p>We need to start the ssh-agent in the background to proceed by running the following command.</p>
+
+<pre><code class="language-bash">eval &quot;$(ssh-agent -s)&quot;
+</code></pre>
+
+<p>This will generate a message with the agent process id. If we are doing this on macOS Sierra 10.12.2 or later, then we will need to create or modify the <code>~/.ssh/config</code> file to load the keys into the ssh-agent. You can also choose whether or not to store the passphrases in your keychain. To check if the file already exists you will use the command below.</p>
+
+<pre><code class="language-bash">open ~/.ssh/config
+</code></pre>
+
+<p>If the file opens continue on to the next part otherwise to create the file you will run the <code>touch</code> command to create the config file.</p>
+
+<pre><code class="language-bash">touch ~/.ssh/config
+</code></pre>
+
+<p>Now that we have the config file open for editing you will add the information below into the file and save it. Make sure to the correct Identity file name and location, if you followed this guide the file is the same one we created under the &ldquo;Creating SSH Keys&rdquo; portion. If you chose to not enter a passphrase when creating the SSH keys then make sure to remove the line <code>UseKeychain yes</code> before saving the file. This will make sure that it&rsquo;s not added to your Keychain on the Mac you are working on.</p>
+
+<pre><code class="language-bash">Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_ed25519
+</code></pre>
+
+<p>Next, we add your SSH private key to the ssh-agent and store your passphrase in the keychain (if you chose to complete that step.) If you created your key with a different name, make sure to replace id_ed25519 in the command with the name of your private key file.</p>
+
+<h3 id="adding-ssh-keys-to-github-account">Adding SSH Keys to GitHub account</h3>
+
+<p>First, we need to copy the newly created SSH key to the clipboard. to do this you will run the command below. Make sure to change the name of the .pub file if you created a different one.</p>
+
+<pre><code class="language-bash">pbcopy &lt; ~/.ssh/id_ed25519.pub
+</code></pre>
+
+<p>If that <code>pbcopy</code> command doesn&rsquo;t work then you can go to the ~/.ssh folder and open the file with a text editor or vi to copy the contents to the clipboard.</p>
+
+<p>Now you will need to log into your GitHub account online. In the upper right hand corner click on your profile picture and go down to select &ldquo;Settings&rdquo;.</p>
+
+<p><img src = "/images/2021/2021-05/GitHubKeys01.png"></img></p>
+
+<p>On the next page on the left hand side you will go to &ldquo;SSH and GPG keys&rdquo;. On that page you will then click on &ldquo;New SSH Key&rdquo;</p>
+
+<p><img src = "/images/2021/2021-05/GitHubKeys02.png"></img></p>
+
+<p>You will need to give your new SSH key a Title to identify it like &ldquo;Personal MacAroni Pro&rdquo; so that it&rsquo;s descriptive and easy to identify what machine this is for. Paste the key contents from your clipboard into the Key section and then click &ldquo;Add SSH key&rdquo;. You might be prompted to enter your GitHub password and click &ldquo;Confirm password&rdquo;.</p>
+
+<p><img src = "/images/2021/2021-05/GitHubKeys03.png"></img></p>
+
+<h3 id="test-ssh-connection-optional">Test SSH Connection (Optional)</h3>
+
+<p>If you want to test the connection to make sure your SSH key was added successfully go to your terminal and type the following command</p>
+
+<pre><code class="language-bash">ssh -T git@github.com
+</code></pre>
+
+<p>You should get a warning similar to the one listed below.</p>
+
+<pre><code class="language-bash">The authenticity of host 'github.com (IP ADDRESS)' can't be established.
+ RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+ Are you sure you want to continue connecting (yes/no)?
+</code></pre>
+
+<p>You can verify that the fingerprint matches GitHub&rsquo;s public key fingerprints listed below and then type <code>yes</code></p>
+
+<pre><code class="language-bash">SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8 (RSA)
+ SHA256:br9IjFspm1vxR3iA35FWE+4VTyz1hYVLIE2t1/CeyWQ (DSA)
+</code></pre>
+
+<p>If everything is successful you will get a message like the one below with your GitHub username instead of the word username.</p>
+
+<pre><code class="language-bash">Hi username! You've successfully authenticated, but GitHub does not 
+ provide shell access.
+</code></pre>
+
+<h3 id="if-prompted-for-username-password-optional">If Prompted for Username &amp; Password (Optional)</h3>
+
+<p>If you are prompted for a username and password then the chances are that you need to update the URL of orgin to use SSH instead of HTTPS. You will probably notice a message similar to the one below.</p>
+
+<pre><code class="language-bash">Username for 'https://github.com':
+</code></pre>
+
+<p>To not be prompted for the credentials you will run the following command replacing <code>username</code> with your username and <code>repository</code> with the name of your repository.</p>
+
+<pre><code class="language-bash">git remote set-url origin git@github.com:username/repository.git
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Manuel Martinez </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>1000</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+                <span>Share:</span>
+                <span>
+
+      
+        <a href="//twitter.com/share?url=https%3a%2f%2fdatacenterjourney.com%2f2021%2fadd-ssh-keys-github-access-on-macos%2f&amp;text=Add%20SSH%20Keys%20GitHub%20Access%20on%20MacOS&amp;via=ManuelM_IT" target="_blank" title="Share on Twitter">
+          <i class="iconfont icon-twitter"></i>
+        </a>
+        
+      
+      
+      
+      
+      
+      
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fdatacenterjourney.com%2f2021%2fadd-ssh-keys-github-access-on-macos%2f&amp;title=Add%20SSH%20Keys%20GitHub%20Access%20on%20MacOS" target="_blank" title="Share on LinkedIn">
+          <i class="iconfont icon-linkedin"></i>
+        </a>
+        
+      
+      
+        
+      
+        
+      
+
+          
+
+          
+
+          
+
+          
+</span>
+                
+            </p>
+
+             
+            <p class="copyright-item">
+                Released under <a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://datacenterjourney.com">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://datacenterjourney.com/2021/install-specific-version-hugo-macos/" class="prev" rel="prev" title="Install Specific Version Hugo MacOS"><i class="iconfont icon-dajiantou"></i>&nbsp;Install Specific Version Hugo MacOS</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+          
+    <script src="https://utteranc.es/client.js"
+            repo="datacenterjourney/blogcomments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+ 
+
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://datacenterjourney.com">Manuel Martinez</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-157994707-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+     </div>
+  </body>
+</html>

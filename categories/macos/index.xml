@@ -6,10 +6,19 @@
     <description>Recent content in macOS on Datacenter Journey</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 06 May 2021 22:31:25 -0700</lastBuildDate>
+    <lastBuildDate>Tue, 25 May 2021 16:20:25 -0700</lastBuildDate>
     
 	<atom:link href="https://datacenterjourney.com/categories/macos/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Add SSH Keys GitHub Access on MacOS</title>
+      <link>https://datacenterjourney.com/2021/add-ssh-keys-github-access-on-macos/</link>
+      <pubDate>Tue, 25 May 2021 16:20:25 -0700</pubDate>
+      
+      <guid>https://datacenterjourney.com/2021/add-ssh-keys-github-access-on-macos/</guid>
+      <description>When trying to update the website hosted in GitHub from a different laptop there was an issue with the submodules not being updated on the new laptop correctly. After searching multiple sites to try and correct this issue I was finally able to figure out what the problem was. The public folder wasn&amp;rsquo;t being properly recognized as a submodule within my Github repository when cloning it to the new laptop.</description>
+    </item>
     
     <item>
       <title>Install Specific Version Hugo MacOS</title>
